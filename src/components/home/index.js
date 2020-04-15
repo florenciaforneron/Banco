@@ -1,39 +1,38 @@
 import React, {Component} from 'react';
 import { Grid, Col, Row} from 'react-flexbox-grid';
-import { Container, Typography, Card, TextField, FormControl,  FormControlLabel, Button} from '@material-ui/core';
+import { Container, Typography, Card, TextField, FormControl,  FormControlLabel, Button, InputLabel} from '@material-ui/core';
+import { Field, reduxForm } from 'redux-form';
 import './styles.css';
 
-class Login extends React.Component{
+class Login extends Component{
+
 
     constructor(props) {
         super(props);
-        this.state = {value: ''};
-
+        this.state = {
+            mail:'',
+            password:'',
+            logueado: false
+        };
         this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
-      }
-
-      handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
+        const target = event.target;
+        const value = target.name === 'logueado' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
       }
     
     render(){
         return(
-            <Container > 
-            <div className="formulario">
-            <Card>
-                <Grid>               
-                    <Typography component="h1" variant="h5" color="primary">
+            <div className="formulario">  
+                <form >
                     <h1>Login</h1>
-                    </Typography>
-                <form autoComplete="off">
-                    <TextField 
-                        id="mail" 
+                    <TextField
                         label="Ingrese Email"
                         variant="outlined" 
                         margin="normal"
@@ -41,9 +40,12 @@ class Login extends React.Component{
                         fullWidth
                         name="email"
                         autoFocus
+                        checked={this.state.mail}
+                        onChange={this.handleChange}
                         />
+                        <br></br>
+                      
                     <TextField 
-                        id="password" 
                         label="Ingrese Contraseña" 
                         type="password"
                         variant="outlined" 
@@ -51,21 +53,19 @@ class Login extends React.Component{
                         required
                         fullWidth
                         name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
                         autoFocus/>
+                        <br></br>
                     <Button
                         type="submit"
                         variant="contained"
                         color="primary"
                         >Ingresar</Button>    
                 </form>
-                </Grid>
-            </Card>
-            </div>
-        </Container>      
+            </div>     
         );
     }
-  
-
 }
 
 export default Login;
