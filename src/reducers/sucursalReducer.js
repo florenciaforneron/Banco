@@ -1,4 +1,4 @@
-export const transactionReducer = (state, action) => {
+export const sucursalReducer = (state, action) => {
     var list = JSON.parse(localStorage.getItem('transactions'))
     switch (action.type) {
         case 'INSERT':
@@ -23,4 +23,4 @@ export const transactionReducer = (state, action) => {
 
 }
 
-export default transactionReducer
+export default sucursalReducer

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from "../../actions/transactionActions"
+import * as actions from "../../actions/sucursalActions"
 import { bindActionCreators } from "redux";
 
 class SucursalForm extends Component {
