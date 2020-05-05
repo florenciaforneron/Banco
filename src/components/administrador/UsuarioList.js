@@ -47,8 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        updateSucursalIndex: actions.updateIndex,
-        deleteSucursal: actions.Delete
+        updateUsuarioIndex: actions.updateIndex,
+        deleteUsuario: actions.Delete
     }, dispatch)
 }
 
